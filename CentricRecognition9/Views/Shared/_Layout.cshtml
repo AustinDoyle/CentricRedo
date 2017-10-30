@@ -6,32 +6,31 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #362d66;" ;>
+
+        <div class="container" style="font-family: Helvetica;font-size: 12px; color: #fff" ;>
+            <div class="navbar-header" style="font-family: Helvetica;font-size: 12px; color: #fff" ;>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse" style=" font-family: Helvetica;font-size: 12px; color: #fff";>
+                    ">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
-              
-                <a class="navbar-brand" href="http://centricconsulting.com"><img src="~/Content/Images/logo.jpg" alt="Centric"></a>
 
+                <a class="navbar-brand" href="http://centricconsulting.com"><img src="~/Content/Images/logo.jpg" alt="Centric"></a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" style="background-color: #362d66; font-family: Helvetica;font-size: 12px; color: #fff" ;>
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Employees", "Index", "Employees")</li>
-                     <li>@Html.ActionLink("Store", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Milestones", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Leaderboard", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("History", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Help", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Store", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Milestones", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Leaderboard", "Index", "Home")</li>
+                    <li>@Html.ActionLink("History", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Help", "Index", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -41,11 +40,13 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+    </div>
+    <div class="navbar navbar-inverse navbar-fixed-bottom" style="background-color: #362d66; font-family: Helvetica;font-size: 12px; color: #fff" ;>
+        <li></li>
         <footer>
-            <p>&copy; @DateTime.Now.Year - MIS 4200 Team 9</p>
+            <p>&copy; @DateTime.Now.Year - Centric Consulting</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

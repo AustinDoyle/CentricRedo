@@ -15,14 +15,21 @@ namespace CentricRecognition9.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "About using Centric Recognition";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "How to contact us";
+
+            return View();
+        }
+
+        public ActionResult CoreValues()
+        {
+            ViewBag.Message = "Centric's Core Values";
 
             return View();
         }
