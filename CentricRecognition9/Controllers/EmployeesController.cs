@@ -47,7 +47,7 @@ namespace CentricRecognition9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,BusinessUnit,PersonalEmail,HireDate,MobilePhone,Linkedin,Address,City,State,Zip,EmploymentStatus,Skills,Birthday,School,PreviousJob")] Employee employee)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,BusinessUnit,PersonalEmail,MobilePhone,Linkedin,EmploymentStatus,Skills,StartDate,School,PreviousJob")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace CentricRecognition9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,BusinessUnit,PersonalEmail,HireDate,MobilePhone,Linkedin,Address,City,State,Zip,EmploymentStatus,Skills,Birthday,School,PreviousJob")] Employee employee)
+        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,BusinessUnit,PersonalEmail,MobilePhone,Linkedin,EmploymentStatus,Skills,StartDate,School,PreviousJob")] Employee employee)
         {
             if (ModelState.IsValid)
             {

@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-bordered table table-striped table-hover well">
+<table class="table table-striped table-bordered table-hover table-condensed">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -24,25 +24,10 @@
             @Html.DisplayNameFor(model => model.PersonalEmail)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HireDate)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.MobilePhone)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Linkedin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Zip)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EmploymentStatus)
@@ -51,7 +36,7 @@
             @Html.DisplayNameFor(model => model.Skills)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Birthday)
+            @Html.DisplayNameFor(model => model.StartDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.School)
@@ -77,25 +62,10 @@
             @Html.DisplayFor(modelItem => item.PersonalEmail)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HireDate)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.MobilePhone)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Linkedin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zip)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EmploymentStatus)
@@ -104,7 +74,7 @@
             @Html.DisplayFor(modelItem => item.Skills)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Birthday)
+            @Html.DisplayFor(modelItem => item.StartDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.School)
