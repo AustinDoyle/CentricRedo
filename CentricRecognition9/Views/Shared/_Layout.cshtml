@@ -19,18 +19,18 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="http://centricconsulting.com"><img src="~/Content/Images/logo.jpg" alt="Centric"></a>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/Content/Images/logo.jpg" alt="Centric"></a>
             </div>
             <div class="navbar-collapse collapse" style="background-color: #362d66; font-family: Helvetica;font-size: 12px; color: #fff" ;>
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Core Values", "CoreValues", "Home")</li>
                     <li>@Html.ActionLink("Employees", "Index", "Employees")</li>
-                    <li>@Html.ActionLink("Store", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Milestones", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Leaderboard", "Index", "Home")</li>
-                    <li>@Html.ActionLink("History", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Help", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Recognition Store", "WIP", "Home")</li>
+                    <li>@Html.ActionLink("Milestones", "WIP", "Home")</li>
+                    <li>@Html.ActionLink("Leaderboard", "WIP", "Home")</li>
+                    <li>@Html.ActionLink("History", "WIP", "Home")</li>
+                    <li>@Html.ActionLink("FAQ", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")

@@ -33,5 +33,10 @@ namespace CentricRecognition9.Controllers
 
             return View();
         }
+
+        public ActionResult WIP()
+        {
+            return View();
+        }
     }
 }
