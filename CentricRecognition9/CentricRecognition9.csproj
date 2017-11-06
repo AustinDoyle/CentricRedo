@@ -189,7 +189,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\CoreValuesController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\RecognitionsController.cs" />
     <Compile Include="DAL\Context.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -198,9 +200,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CoreValue.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Recognition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -270,6 +274,16 @@
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Home\CoreValues.cshtml" />
     <Content Include="Views\Home\WIP.cshtml" />
+    <Content Include="Views\Recognitions\Create.cshtml" />
+    <Content Include="Views\Recognitions\Delete.cshtml" />
+    <Content Include="Views\Recognitions\Details.cshtml" />
+    <Content Include="Views\Recognitions\Edit.cshtml" />
+    <Content Include="Views\Recognitions\Index.cshtml" />
+    <Content Include="Views\CoreValues\Create.cshtml" />
+    <Content Include="Views\CoreValues\Delete.cshtml" />
+    <Content Include="Views\CoreValues\Details.cshtml" />
+    <Content Include="Views\CoreValues\Edit.cshtml" />
+    <Content Include="Views\CoreValues\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

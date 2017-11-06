@@ -13,6 +13,8 @@ namespace CentricRecognition9.DAL
         public Context() : base("name=Centric")
         { }
 
+        public DbSet<Recognition> Recognitions { get; set; }
+        public DbSet<CoreValue> CoreValues { get; set; }
         public DbSet<Employee> Employees { get; set; }
     
 

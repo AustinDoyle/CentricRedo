@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CentricRecognition9.Models.CoreValue>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CoreValueName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoreValueDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoreValueName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoreValueDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CoreValueID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CoreValueID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CoreValueID })
+        </td>
+    </tr>
+}
+
+</table>
