@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,7 @@ namespace CentricRecognition9.Models
     {
         public int RecognitionID { get; set; }
 
+        [Display(Name = "Description")]
         public string description { get; set; }
 
         public int EmployeeID { get; set; }

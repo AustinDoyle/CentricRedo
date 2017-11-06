@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<CentricRecognition9.Models.Recognition>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Recognition";
 }
 
-<h2>Index</h2>
+<h2>Recognition</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered table-hover table-condensed">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CoreValue.CoreValueName)
@@ -20,7 +20,6 @@
         <th>
             @Html.DisplayNameFor(model => model.description)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -33,11 +32,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RecognitionID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RecognitionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RecognitionID })
         </td>
     </tr>
 }
