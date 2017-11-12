@@ -16,8 +16,15 @@ namespace CentricRecognition9.Controllers
         private Context db = new Context();
 
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(string EmployeesSearchString)
         {
+            var employeesearch = from u in db.Employees select u;
+            if (!String.IsNullOrEmpty(EmployeesSearchString))
+            {
+                employeesearch = employeesearch.Where(u => u.LastName.Contains(EmployeesSearchString) || u.FirstName.Contains(EmployeesSearchString));
+                // if here, employees were found so view them
+                return View(employeesearch.ToList());
+            }
             return View(db.Employees.ToList());
         }
 
