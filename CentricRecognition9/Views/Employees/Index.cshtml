@@ -3,31 +3,13 @@
 @{
     ViewBag.Title = "Index";
 }
-<br />
-<h2>Employee List</h2>
+
+<h2>Index</h2>
+
 <p>
-   @* @Html.ActionLink("Create New", "Create") *@
+    @Html.ActionLink("Create New", "Create")
 </p>
-
-<div class="form-horizontal">
-    <div class="form-group">
-        <div class="col-md-12">
-            @using (Html.BeginForm("Index", "Employees", FormMethod.Get))
-            {
-                <p>
-                    Search Employee:
-                    @Html.TextBox("EmployeesSearchString")
-                    <input type="submit" value="Search" />
-                </p>
-            }
-        </div>
-    </div>
-</div>
-
-
-
-
-<table class="table table-striped table-bordered table-hover table-condensed">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)

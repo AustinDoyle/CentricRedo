@@ -10,6 +10,8 @@ namespace CentricRecognition9.Models
     {
         public int ID { get; set; }
 
+        public string fullName { get { return LastName + ", " + FirstName; } }
+
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "Patient first name is required")]
         public string FirstName { get; set; }
