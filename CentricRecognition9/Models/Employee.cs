@@ -10,6 +10,7 @@ namespace CentricRecognition9.Models
     {
         public int ID { get; set; }
 
+        [Display(Name = "Full Name")]
         public string fullName { get { return LastName + ", " + FirstName; } }
 
         [Display(Name = "First Name")]
