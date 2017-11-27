@@ -68,6 +68,7 @@ namespace CentricRecognition9.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+(@centricconsulting.com|@CentricConsulting.com|@Centricconsulting.com|@centricConsulting.com)$", ErrorMessage = "Registration limited to Centric Employee Email.")]
         public string Email { get; set; }
 
         [Required]
