@@ -39,24 +39,6 @@
         <th>
             @Html.DisplayNameFor(model => model.MobilePhone)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Linkedin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmploymentStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Skills)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.School)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PreviousJob)
-        </th>
         <th></th>
     </tr>
 
@@ -77,27 +59,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.MobilePhone)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Linkedin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmploymentStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Skills)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.School)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PreviousJob)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.ID })
-        </td>
+        <td>@Html.ActionLink("Details", "Details", new { id = item.ID })</td>
+           
+        
     </tr>
 }
 
