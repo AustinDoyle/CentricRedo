@@ -11,6 +11,7 @@ using CentricRecognition9.Models;
 
 namespace CentricRecognition9.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         private Context db = new Context();
