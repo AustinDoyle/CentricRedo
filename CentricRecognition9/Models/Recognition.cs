@@ -13,7 +13,7 @@ namespace CentricRecognition9.Models
         [Display(Name = "Description")]
         public string description { get; set; }
 
-        public int EmployeeID { get; set; }
+        public Guid EmployeeID { get; set; }
 
         public virtual Employee Employee { get; set; }
 

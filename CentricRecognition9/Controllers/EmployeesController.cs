@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CentricRecognition9.DAL;
 using CentricRecognition9.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CentricRecognition9.Controllers
 {
@@ -19,24 +20,24 @@ namespace CentricRecognition9.Controllers
         // GET: Employees
         public ActionResult Index(string EmployeesSearchString)
         {
-            var employeesearch = from u in db.Employees select u;
+            var employeesearch = from u in db.employees select u;
             if (!String.IsNullOrEmpty(EmployeesSearchString))
             {
                 employeesearch = employeesearch.Where(u => u.LastName.Contains(EmployeesSearchString) || u.FirstName.Contains(EmployeesSearchString));
                 // if here, employees were found so view them
                 return View(employeesearch.ToList());
             }
-            return View(db.Employees.ToList());
+            return View(db.employees.ToList());
         }
 
         // GET: Employees/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            Employee employee = db.employees.Find(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -55,31 +56,46 @@ namespace CentricRecognition9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,BusinessUnit,PersonalEmail,MobilePhone,Linkedin,EmploymentStatus,Skills,StartDate,School,PreviousJob")] Employee employee)
+        public ActionResult Create([Bind(Include = "UID,FirstName,LastName,BusinessUnit,PersonalEmail,MobilePhone,Linkedin,EmploymentStatus,Skills,StartDate,School,PreviousJob")] Employee Employee)
         {
             if (ModelState.IsValid)
             {
-                db.Employees.Add(employee);
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                Employee.UID = memberID;
+                db.employees.Add(Employee);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(employee);
+            return View(Employee);
         }
 
         // GET: Employees/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
+            Employee Employee = db.employees.Find(id);
+            if (Employee == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+            if (Employee.UID == memberID)
+            {
+                return View(Employee);
+            }
+            else
+            {
+                return View("NotAuthenticated");
+            }
+            
+
+            
         }
 
         // POST: Employees/Edit/5
@@ -87,7 +103,7 @@ namespace CentricRecognition9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,BusinessUnit,PersonalEmail,MobilePhone,Linkedin,EmploymentStatus,Skills,StartDate,School,PreviousJob")] Employee employee)
+        public ActionResult Edit([Bind(Include = "UID,FirstName,LastName,BusinessUnit,PersonalEmail,MobilePhone,Linkedin,EmploymentStatus,Skills,StartDate,School,PreviousJob")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -99,13 +115,13 @@ namespace CentricRecognition9.Controllers
         }
 
         // GET: Employees/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            Employee employee = db.employees.Find(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -118,8 +134,8 @@ namespace CentricRecognition9.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Employee employee = db.Employees.Find(id);
-            db.Employees.Remove(employee);
+            Employee employee = db.employees.Find(id);
+            db.employees.Remove(employee);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -131,6 +147,11 @@ namespace CentricRecognition9.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult NotAuthenticated()
+        {
+            return View();
         }
     }
 }

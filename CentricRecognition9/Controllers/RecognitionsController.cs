@@ -42,7 +42,7 @@ namespace CentricRecognition9.Controllers
         public ActionResult Create()
         {
             ViewBag.CoreValueID = new SelectList(db.CoreValues, "CoreValueID", "CoreValueName");
-            ViewBag.EmployeeID = new SelectList(db.Employees, "ID", "fullName");
+            ViewBag.EmployeeID = new SelectList(db.employees, "UID", "fullName");
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace CentricRecognition9.Controllers
             }
 
             ViewBag.CoreValueID = new SelectList(db.CoreValues, "CoreValueID", "CoreValueName", recognition.CoreValueID);
-            ViewBag.EmployeeID = new SelectList(db.Employees, "ID", "fullName", recognition.EmployeeID);
+            ViewBag.EmployeeID = new SelectList(db.employees, "UID", "fullName", recognition.EmployeeID);
             return View(recognition);
         }
 
@@ -78,7 +78,7 @@ namespace CentricRecognition9.Controllers
                 return HttpNotFound();
             }
             ViewBag.CoreValueID = new SelectList(db.CoreValues, "CoreValueID", "CoreValueName", recognition.CoreValueID);
-            ViewBag.EmployeeID = new SelectList(db.Employees, "ID", "fullName", recognition.EmployeeID);
+            ViewBag.EmployeeID = new SelectList(db.employees, "UID", "fullName", recognition.EmployeeID);
             return View(recognition);
         }
 
@@ -96,7 +96,7 @@ namespace CentricRecognition9.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CoreValueID = new SelectList(db.CoreValues, "CoreValueID", "CoreValueName", recognition.CoreValueID);
-            ViewBag.EmployeeID = new SelectList(db.Employees, "ID", "fullName", recognition.EmployeeID);
+            ViewBag.EmployeeID = new SelectList(db.employees, "UID", "fullName", recognition.EmployeeID);
             return View(recognition);
         }
 

@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity;
 
 namespace CentricRecognition9.Models
 {
     public class Employee
     {
-        public int ID { get; set; }
+        [Required]
+        [Key]
+        public Guid UID { get; set; }
 
         [Display(Name = "Full Name")]
         public string fullName { get { return LastName + ", " + FirstName; } }
