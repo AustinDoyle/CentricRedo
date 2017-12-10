@@ -56,5 +56,6 @@ namespace CentricRecognition9.Models
 
         [Display(Name = "Previous Job")]
         public string PreviousJob { get; set; }
+
     }
 }

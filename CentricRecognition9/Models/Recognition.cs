@@ -22,6 +22,6 @@ namespace CentricRecognition9.Models
         public int CoreValueID { get; set; }
 
         public virtual CoreValue CoreValue { get; set; }
-
     }
+
 }
