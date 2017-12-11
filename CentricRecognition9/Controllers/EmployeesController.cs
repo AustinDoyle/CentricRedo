@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using CentricRecognition9.DAL;
 using CentricRecognition9.Models;
 using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace CentricRecognition9.Controllers
 {
@@ -56,20 +57,41 @@ namespace CentricRecognition9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UID,FirstName,LastName,BusinessUnit,PersonalEmail,MobilePhone,Linkedin,EmploymentStatus,Skills,StartDate,School,PreviousJob")] Employee Employee)
+        public ActionResult Create([Bind(Include = "UID,FirstName,LastName,BusinessUnit,PersonalEmail,MobilePhone,Linkedin,EmploymentStatus,Skills,StartDate,School,PreviousJob,PersonalImage")] Employee Employee)
         {
             if (ModelState.IsValid)
             {
                 Guid memberID;
                 Guid.TryParse(User.Identity.GetUserId(), out memberID);
                 Employee.UID = memberID;
+                HttpPostedFileBase file = Request.Files["PersonalImage"];
+                Employee.UID = memberID;
+
+                if (file != null && file.FileName != null && file.FileName != "")
+                {
+                    FileInfo fi = new FileInfo(file.FileName);
+                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != "gif")
+                    {
+                        TempData["Errormsg"] = "Image File Extension is not valid";
+                        return View(Employee);
+                    }
+                    else
+                    {
+                        Employee.PersonalImage = Employee.UID + fi.Extension;
+
+                        file.SaveAs(Server.MapPath("~/Content/EmployeeImages/" + Employee.UID + fi.Extension));
+                    }
+                }
+
+
                 db.employees.Add(Employee);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Employees");
             }
 
             return View(Employee);
         }
+
 
         // GET: Employees/Edit/5
         public ActionResult Edit(Guid id)
@@ -103,16 +125,51 @@ namespace CentricRecognition9.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UID,FirstName,LastName,BusinessUnit,PersonalEmail,MobilePhone,Linkedin,EmploymentStatus,Skills,StartDate,School,PreviousJob")] Employee employee)
+        public ActionResult Edit([Bind(Include = "UID,FirstName,LastName,BusinessUnit,PersonalEmail,MobilePhone,Linkedin,EmploymentStatus,Skills,StartDate,School,PreviousJob,PersonalImage")] Employee employee)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(employee).State = EntityState.Modified;
+                HttpPostedFileBase file = Request.Files["PersonalImage"];
+                if (file != null && file.FileName != null && file.FileName != "")
+                {
+                    FileInfo fi = new FileInfo(file.FileName);
+                    if (fi.Extension != ".jpeg" && fi.Extension != ".jpg" && fi.Extension != "gif")
+                    {
+                        TempData["Errormsg"] = "Image File Extension is not valid";
+                        return View(employee);
+                    }
+                    else
+                    {
+                        Employee employeeOld = db.employees.Find(employee.UID);
+                        string imageName = employeeOld.PersonalImage;
+                        string path = Server.MapPath("~/Content/EmployeeImages/" + imageName);
+                        try
+                        {
+                            if (System.IO.File.Exists(path))
+                            {
+                                System.IO.File.Delete(path);
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+                        employee.PersonalImage = employee.UID + fi.Extension;
+                        file.SaveAs(Server.MapPath("~/Content/EmployeeImages/" + employee.UID + fi.Extension));
+                    }
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(employee);
         }
+
 
         // GET: Employees/Delete/5
         public ActionResult Delete(Guid id)
@@ -135,6 +192,24 @@ namespace CentricRecognition9.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Employee employee = db.employees.Find(id);
+            string imageName = employee.PersonalImage;
+            string path = Server.MapPath("~/Content/EmployeeImages/" + imageName);
+
+            try
+            {
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
             db.employees.Remove(employee);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -154,4 +229,5 @@ namespace CentricRecognition9.Controllers
             return View();
         }
     }
+
 }

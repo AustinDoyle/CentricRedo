@@ -9,7 +9,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -109,6 +109,15 @@
                 @Html.ValidationMessageFor(model => model.PreviousJob, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="from-group">
+            @Html.LabelFor(model => model.PersonalImage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img src="~/Content/EmployeeImages/@Model.PersonalImage" height="400" />
+                <input id="PersonalImage" type="file" name="PersonalImage" />
+            </div>
+        </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
