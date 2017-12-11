@@ -1,4 +1,8 @@
-﻿body {
+﻿.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
