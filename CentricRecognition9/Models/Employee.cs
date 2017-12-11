@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity;
+using System.Web.Mvc;
 
 namespace CentricRecognition9.Models
 {
@@ -26,9 +27,11 @@ namespace CentricRecognition9.Models
 
         [Display(Name = "Business Unit")]
         [Required(ErrorMessage = "Business Unit is required")]
-        public string BusinessUnit { get; set; }
+        [RegularExpression("(Columbus|Boston|Charlotte|Chicago|Cincinnati|Cleveland|India|Indianapolis|Miami|Seattle|St. Louis|Tampa)", ErrorMessage = "Business unit is limited to only Centric locations (Ex. Columbus)")]
+        public Unit BusinessUnit { get; set; }
 
         [Display(Name = "Work Email")]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+(@centricconsulting.com|@CentricConsulting.com|@Centricconsulting.com|@centricConsulting.com)$", ErrorMessage = "Registration limited to Centric Employee Email.")]
         [Required(ErrorMessage = "Work email is required")]
         public string PersonalEmail { get; set; }
 
@@ -56,6 +59,22 @@ namespace CentricRecognition9.Models
 
         [Display(Name = "Previous Job")]
         public string PreviousJob { get; set; }
+    }
+
+    public enum Unit
+    {
+       Boston,
+       Charlotte,
+       Chicago,
+       Cincinnati,
+       Cleveland,
+       Columbus,
+       India,
+       Indianapolis,
+       Miami,
+       Seattle,
+       Louis,
+       Tampa
 
     }
 }

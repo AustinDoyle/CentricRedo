@@ -35,11 +35,34 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.BusinessUnit, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                    <select class="form-control" id="BusinessUnit" name="BusinessUnit">
+                    <option>Select Business Unit</option>
+                    <option>Boston</option>
+                    <option>Charlotte</option>
+                    <option>Chicago</option>
+                    <option>Cincinnati</option>
+                    <option>Cleveland</option>
+                    <option>Columbus</option>
+                    <option>India</option>
+                    <option>Indianapolis</option>
+                    <option>Miami</option>
+                    <option>Seattle</option>
+                    <option>Louis</option>
+                    <option>Tampa</option>
+                </select>
+            </div>
+        </div>
+
+
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.BusinessUnit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.BusinessUnit, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BusinessUnit, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.PersonalEmail, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -105,8 +128,9 @@
             </div>
         </div>
 
+
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
