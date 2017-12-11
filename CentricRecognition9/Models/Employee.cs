@@ -59,11 +59,6 @@ namespace CentricRecognition9.Models
 
         [Display(Name = "Previous Job")]
         public string PreviousJob { get; set; }
-
-        [Display(Name = "Personal Image")]
-        public string PersonalImage { get; set; }
-
-
     }
 
     public enum Unit
